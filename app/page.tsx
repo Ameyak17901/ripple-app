@@ -1,102 +1,173 @@
-import Image from "next/image";
+import FeatureCard from "@/components/FeatureCard";
+import Header from "@/components/Header";
+import { Button } from "@/components/ui/button";
+import { SignedOut, SignInButton } from "@clerk/nextjs";
+import { MessageCircle, ShieldIcon, Users, Video, Zap } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div>
+      <Header />
+      <main className="flex-1 flex flex-col items-center px-4 py-16 sm:px-6 text-center gap-28">
+        <div className="max-w-3xl space-y-8 relative">
+          <div className="absolute inset-0 -z-10 bg-gradient-br from-blue-200 via-indigo-100 to-purple-200 dark:from-blue-950/20 dark:via-indigo-20 dark:to-purple-950/20 rounded-3xl blur-3xl scale-150 opacity-60"></div>
+          <div>
+            <h1 className="text-5xl sm:text-7xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 dark:from-blue-400 dark:via-purple-400 dark:to-indigo-400 ">
+              Connect instantly
+              <br />
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-400 ">
+                Chat smarter.
+              </span>
+            </h1>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+              The modern messaging app that combines lighting-fast chat and
+              crystal clear video calls, all in one experience.
+            </p>
+          </div>
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 pt-6">
+            <SignedOut>
+              <SignInButton mode="modal">
+                <Button size="lg" className="text-lg px-8 py-6 h-auto">
+                  Start chatting for free
+                </Button>
+              </SignInButton>
+            </SignedOut>
+          </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+          <div className="pt-8">
+            <p className="text-sm text-muted-foreground mb-4">
+              Trusted by thousands of users worldwise
+            </p>
+            <div className="flex justify-center items-center gap-8 text-muted-foreground">
+              <div className="text-center">
+                <div className="text-2xl font-bold text-foreground">50K+</div>
+                <div className="text-sm">Active Users</div>
+              </div>
+              <div className="w-px bg-border h-8"></div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-foreground">1M+</div>
+                <div className="text-sm">Messages sent</div>
+              </div>
+              <div className="w-px bg-border h-8"></div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-foreground">99.9%</div>
+                <div className="text-sm">Uptime</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="w-full max-w-6xl">
+          <div className="w-full flex justify-center items-center mb-16">
+            <div className="flex-1 h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
+            <div className="px-6">
+              <div className="w-2 h-2 rounded-full bg-primary/60"></div>
+            </div>
+            <div className="flex-1 h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
+          </div>
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-6">
+              Everything you need to connect, communicate, and collaborate
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Powerful features designed to make your conversations seamless,
+              whether you&apos;re chatting with friends, family, or
+              collaborating with team.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+            <FeatureCard
+              title="Instant Messaging"
+              description="Send and receive lighting-fast messages with real-time delivery, Chat with friends, family, or colleagues"
+              icon={MessageCircle}
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            <FeatureCard
+              title="HD Video Calls"
+              description="Crystal clear video calls with end-to-end encryption. Connect face-to-face with friends, family, or colleagues"
+              icon={Video}
+            />
+            <FeatureCard
+              title="Privacy First"
+              description="End to end encryption to ensure your conversations stay private. Your data is never shared with third parties."
+              icon={ShieldIcon}
+            />
+            <FeatureCard
+              title="Group Chats"
+              description="Create group chats with friends, family, or colleagues. Share messages, photos, and videos in a private space."
+              icon={Users}
+            />
+            <FeatureCard
+              title="Lighting Fast"
+              description="Optimized for speed and performance. Enjoy a seamless messaging experience with minimal lag and instant notifications."
+              icon={Zap}
+            />
+          </div>
+        </div>
+
+        <div className="w-full max-w-4xl">
+          <div className="rounded-2xl border bg-gradient-to-br from-primary/5 to-primary/10 p-12 text-center">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+              Ready to transform your communications
+            </h2>
+            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+              Join thousands of users who have already discovered better way to
+              chat and collaborate. Sign Up today and experience the future of
+              messaging.
+            </p>
+            <div className="flex justify-center flex-col sm:flex-row items-center gap-6 mt-8 text-sm text-muted-foreground">
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                No credit card required
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                Free forever plan
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                Setup in 30 seconds
+              </div>
+            </div>
+          </div>
         </div>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      <footer className="border-t bg-muted/30">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-6">
+            <div>
+              <span className="text-xl font-bold tracking-tight">Ripple</span>
+              <p className="text-sm text-muted-foreground mt-2">
+                The future of communication
+              </p>
+            </div>
+
+            <div className="flex items-center gap-8">
+              <a
+                href="#"
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                Privacy Policy
+              </a>
+              <a
+                href="#"
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                Terms of Service
+              </a>
+              <a
+                href="#"
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                Privacy Support
+              </a>
+            </div>
+          </div>
+          <div className="border-t mt-8 pt-6 text-center">
+            <p className="text-xs text-muted-foreground">
+              2025 Ripple. This is not a real product.
+            </p>
+          </div>
+        </div>
       </footer>
     </div>
   );
